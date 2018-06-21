@@ -53,7 +53,7 @@
 
         if (Model.SuccessSubmit)
         {
-            @Html.Encode(!string.IsNullOrEmpty(Model.SuccessMessage) ? Model.SuccessMessage : Translate.Text("Default success message."))
+            @Html.Raw(@Html.Encode(!string.IsNullOrEmpty(Model.SuccessMessage) ? Model.SuccessMessage : Translate.Text("Default success message.")))
             return;
         }
 
@@ -67,17 +67,17 @@
             @Html.BootstrapText("Information")
         }
 
-        <div class="has-error has-feedback">
-            @Html.BootstrapValidationSammary(false)
-        </div>
+            <div class="has-error has-feedback">
+                @Html.BootstrapValidationSammary(false)
+            </div>
 
-        @Html.EditorFor(x => Model.Sections)
+            @Html.EditorFor(x => Model.Sections)
 
-        if (Model.ShowFooter)
-        {
-            @Html.BootstrapText("Footer")
+            if (Model.ShowFooter)
+            {
+                @Html.BootstrapText("Footer")
+            }
+
+            @Html.BootstrapSubmit()
         }
-
-        @Html.BootstrapSubmit()
     }
-}
